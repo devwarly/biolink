@@ -1,0 +1,357 @@
+/* Dashboard.module.css */
+
+.dashboardContainer {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+/* --- SIDEBAR (DESKTOP) --- */
+.sidebar {
+  width: 280px;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--text-main);
+  margin-bottom: 40px;
+  padding-left: 12px;
+}
+
+.logo span {
+  color: var(--accent-color);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.navItem span {
+  white-space: nowrap;
+}
+
+.navItem:hover {
+  background: var(--hover-nav-link);
+  color: var(--text-main);
+}
+
+.navItem.active {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+.navDivider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 15px 0;
+}
+
+.logout {
+  margin-top: auto;
+  color: #ef4444;
+}
+
+.logout:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.mainContent {
+  flex: 1;
+  padding: 2.5rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.topHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.welcome h1 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  color: var(--text-main);
+}
+
+.welcome p {
+  color: var(--text-muted);
+}
+
+.createBtn {
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.createBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* --- GRID DE MÉTRICAS --- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.statCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  border-radius: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.statCard:hover {
+  border-color: var(--accent-color);
+}
+
+.statHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.statIcon {
+  color: var(--accent-color);
+  background: rgba(37, 99, 235, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+}
+
+.trend {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.statBody h3 {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+
+.statBody strong {
+  font-size: 1.6rem;
+  color: var(--text-main);
+}
+
+/* --- CARDS DE PROJETOS --- */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.projectCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+}
+
+.projectThumb {
+  height: 180px;
+  background: linear-gradient(45deg, #1e293b, #0f172a);
+  position: relative;
+}
+
+.statusBadge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #10b981;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.projectBody {
+  padding: 20px;
+}
+
+.url {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 8px 0 20px;
+}
+
+.cardActions {
+  display: flex;
+  gap: 12px;
+}
+
+.editBtn, .viewBtn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: 0.2s;
+}
+
+.editBtn {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+}
+
+.viewBtn {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.viewBtn:hover {
+  background: var(--hover-nav-link);
+}
+
+/* --- RESPONSIVIDADE E MENU MOBILE --- */
+
+.mobileMenuToggle {
+  display: none; /* Escondido por padrão */
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 998;
+}
+
+@media (max-width: 1100px) {
+  .mainContent {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobileMenuToggle {
+    display: flex;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 1001;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -100%; /* Fora da tela */
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    box-shadow: 15px 0 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .sidebarOpen {
+    left: 0; /* Desliza para dentro */
+  }
+
+  .overlay {
+    display: block;
+  }
+
+  .mainContent {
+    padding: 1.5rem;
+    padding-bottom: 100px; /* Espaço para o botão flutuante */
+  }
+
+  .topHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .createBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .projectCard {
+    max-width: 100%;
+  }
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext';
 import { Button } from '../Button/Button';
 import { PremiumButton } from '../Button/PremiumButton';
@@ -11,6 +11,7 @@ export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('inicio');
+    const navigate = useNavigate();
 
     // Referência para saber se o scroll foi disparado por um clique
     const isScrollingRef = useRef(false);
@@ -89,13 +90,15 @@ export function Header() {
                             variant="ghost"
                             size="sm"
                             icon={<LogIn size={18} />}
+                            onClick={() => navigate('/login')}
                         >
                             Entrar
                         </Button>
                         <Button
                             variant="primary"
                             size="sm"
-                            icon={<UserPlus size={18} />}
+                            icon={<LogIn size={18} />}
+                            onClick={() => navigate('/cadastro')}
                         >
                             Cadastre-se
                         </Button>
@@ -145,20 +148,16 @@ export function Header() {
                     <div className='premiunButton-desktop'>
                         <PremiumButton />
                     </div>
-                    <Button
-                        variant="ghost"
-                        size="sm"
-                        icon={<LogIn size={18} />}
-                    >
-                        Entrar
-                    </Button>
-                    <Button
-                        variant="primary"
-                        size="sm"
-                        icon={<UserPlus size={18} />}
-                    >
-                        Cadastre-se
-                    </Button>
+                    <Link to="/login">
+                        <Button variant="ghost" size="sm" icon={<LogIn size={18} />}>
+                            Entrar
+                        </Button>
+                    </Link>
+                    <Link to="/cadastro">
+                        <Button variant="primary" size="sm" icon={<LogIn size={18} />}>
+                            Cadastrar-se
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </header>

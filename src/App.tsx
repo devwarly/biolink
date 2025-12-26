@@ -1,44 +1,53 @@
-import { HashRouter, Routes, Route } from 'react-router-dom'; // Importação corrigida aqui
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { Hero } from './components/Hero/Hero';
-import { Solucoes } from './components/Solucoes/Solucoes';
-import { Templates } from "./components/Templates/Templates";
-import { Recursos } from './components/Recursos/Recursos';
-import { Precos } from './components/Precos/Precos';
-import { Footer } from './components/Footer/Footer';
+import { LandingPage } from './pages/LandingPage';
+import { Login } from './pages/Auth/Login';
+import { Cadastro } from './pages/Auth/Cadastro';
+import { Dashboard } from './pages/Dashboard/Dashboard';
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import './styles/Global.css';
 
-// Componente que agrupa todas as seções da Home
-const LandingPage = () => (
+const LayoutContent = () => {
+  const location = useLocation();
+  const hideHeaderRoutes = ['/login', '/cadastro', '/dashboard'];
+  
+  // Verifica se a rota atual começa com algum dos caminhos proibidos para o Header
+  const shouldHideHeader = hideHeaderRoutes.some(route => location.pathname.startsWith(route));
+
+  return (
     <>
-        <Hero />
-        <Solucoes />
-        <Templates />
-        <Recursos />
-        <Precos />
-        <Footer />
+      {!shouldHideHeader && <Header />}
+      <main>
+        <Routes>
+          {/* Rotas Públicas */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          
+          {/* Rota Protegida: O Dashboard só renderiza se PrivateRoute permitir */}
+          <Route 
+            path="/dashboard" 
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            } 
+          />
+
+          <Route path="*" element={<LandingPage />} />
+        </Routes>
+      </main>
     </>
-);
+  );
+};
 
 export default function App() {
-    return (
-        <ThemeProvider>
-            <HashRouter>
-                <Header />
-                <main>
-                    <Routes>
-                        {/* Rota principal */}
-                        <Route path="/" element={<LandingPage />} />
-
-                        {/* Rota de login */}
-                        <Route path="/login" element={<div>Página de Login</div>} />
-
-                        {/* SOLUÇÃO: Captura /biolink/ e qualquer outra variação e manda para a Home */}
-                        <Route path="*" element={<LandingPage />} />
-                    </Routes>
-                </main>
-            </HashRouter>
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider>
+      <HashRouter>
+        <LayoutContent />
+      </HashRouter>
+    </ThemeProvider>
+  );
 }
