@@ -12,6 +12,7 @@
   --hover-nav-link: #dfdfdf46;
   --btn-color: #2563eb;
   --hover-btn-color: #1e40af;
+  --border-btn-enn: #00000034;
 }
 
 [data-theme='dark'] {
@@ -24,6 +25,7 @@
   --accent-color: #3b82f6;
   --header-bg: rgba(15, 23, 42, 0.9);
   --hover-nav-link: #ffffff09;
+  --border-btn-enn: #ffffff34;
 }
 
 /* Reset e Estilos Globais */

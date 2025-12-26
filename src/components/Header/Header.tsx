@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext';
 import { Button } from '../Button/Button';
 import { PremiumButton } from '../Button/PremiumButton';
+import { LogIn, UserPlus } from 'lucide-react';
 import './Header.css';
 
 export function Header() {
@@ -83,6 +84,22 @@ export function Header() {
                 {isMobileMenuOpen && <div className="menu-backdrop-mobile" onClick={() => setIsMobileMenuOpen(false)} />}
 
                 <nav className={`nav-menu ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+                    <div className="header-actions mobyle-only">
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            icon={<LogIn size={18} />}
+                        >
+                            Entrar
+                        </Button>
+                        <Button
+                            variant="primary"
+                            size="sm"
+                            icon={<UserPlus size={18} />}
+                        >
+                            Cadastre-se
+                        </Button>
+                    </div>
                     <div className="nav-links">
                         {sectionIds.map((id) => (
                             <a
@@ -122,19 +139,26 @@ export function Header() {
                             </ul>
                         )}
                     </div>
-
-                    <div className="header-actions mobyle-only">
-                        <Button variant="ghost" size="sm">Entrar</Button>
-                        <Button variant="primary" size="sm">Começar</Button>
-                    </div>
                 </nav>
 
                 <div className="header-actions desktop-only">
                     <div className='premiunButton-desktop'>
                         <PremiumButton />
                     </div>
-                    <Button variant="ghost" size="sm">Entrar</Button>
-                    <Button variant="primary" size="sm">Começar</Button>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        icon={<LogIn size={18} />}
+                    >
+                        Entrar
+                    </Button>
+                    <Button
+                        variant="primary"
+                        size="sm"
+                        icon={<UserPlus size={18} />}
+                    >
+                        Cadastre-se
+                    </Button>
                 </div>
             </div>
         </header>
