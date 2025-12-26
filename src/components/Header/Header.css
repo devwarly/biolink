@@ -172,7 +172,9 @@
     }
 
     .premiunButton-mobile {
+        position: absolute;
         display: flex;
+        right: 60px;
         width: auto;
     }
 

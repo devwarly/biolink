@@ -186,7 +186,8 @@
     }
 
     .mainTitle {
-        max-width: 95%;
+        max-width: 100%;
+        max-width: 650px;
         text-align: left;
         align-items: flex-start;
     }
