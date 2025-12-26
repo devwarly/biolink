@@ -24,15 +24,14 @@
 
 .logo {
     font-size: 1.5rem;
-    font-weight: 800;
-    text-decoration: none;
-    color: var(--text-main);
-    letter-spacing: -1px;
     z-index: 2001;
+    padding: 0;
+    margin: 0;
 }
 
-.logo span {
-    color: #2563eb;
+.me-2 {
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .nav-menu {
@@ -161,6 +160,13 @@
     display: none;
 }
 
+
+@media (max-width: 600px) {
+    .logo {
+        scale: 0.8;
+        margin-left: -20px;
+    }
+}
 
 @media (max-width: 1100px) {
     .mobile-menu-toggle {

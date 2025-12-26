@@ -5,6 +5,7 @@ import { Button } from '../Button/Button';
 import { PremiumButton } from '../Button/PremiumButton';
 import { LogIn } from 'lucide-react';
 import './Header.css';
+import { LogoIcon } from '../LogoIcon/LogoIcon';
 
 // Mapeamento de IDs para nomes legíveis
 const sectionNames: Record<string, string> = {
@@ -64,10 +65,10 @@ export function Header() {
 
     const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault(); // Impede o comportamento padrão da âncora
-        
+
         setIsMobileMenuOpen(false);
         setActiveSection(id);
-        
+
         // Bloqueia o observer para não "saltar" entre estados durante a animação
         isScrollingRef.current = true;
 
@@ -89,7 +90,7 @@ export function Header() {
         <header className="header-container">
             <div className="header-content">
                 <Link to="/" className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                    Software<span>House</span>
+                    <LogoIcon size={150} className="me-2" />
                 </Link>
 
                 <div className='premiunButton-mobile'>

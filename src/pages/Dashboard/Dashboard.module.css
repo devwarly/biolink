@@ -1,357 +1,378 @@
-/* Dashboard.module.css */
-
+/* --- CONTAINER PRINCIPAL --- */
 .dashboardContainer {
   display: flex;
   min-height: 100vh;
-  background: var(--bg-primary);
+  background-color: var(--bg-secondary); /* Usa a variável do tema */
+  color: var(--text-main); /* */
+  font-family: 'Inter', sans-serif;
 }
 
-/* --- SIDEBAR (DESKTOP) --- */
+/* --- SIDEBAR (MENU LATERAL) --- */
 .sidebar {
   width: 280px;
-  background: var(--bg-secondary);
-  border-right: 1px solid var(--border-color);
-  padding: 30px 20px;
+  background-color: #020617; /* Slate 950 - Deep Night */
+  color: white;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: 0;
+  position: fixed;
   height: 100vh;
-  z-index: 1000;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  transition: transform 0.3s ease; /* */
+}
+
+.sidebarHeader {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #1e293b;
+  margin-bottom: 1.5rem; /* */
 }
 
 .logo {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  text-decoration: none;
-  color: var(--text-main);
-  margin-bottom: 40px;
-  padding-left: 12px;
+  color: #f8fafc;
 }
 
 .logo span {
-  color: var(--accent-color);
+  color: #38bdf8; /* Sky 400 - Destaque no escuro */
 }
 
-.nav {
+/* Perfil do Corretor na Sidebar */
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 1.5rem;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05); /* */
+  border-radius: 12px;
+}
+
+.profileImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #38bdf8; /* */
+}
+
+.userInfo h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  color: white; /* */
+}
+
+.userInfo span {
+  font-size: 0.75rem;
+  color: #94a3b8; /* */
+}
+
+.planBadge {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  display: inline-block;
+  font-weight: 600;
+  margin-top: 0.5rem; /* */
+}
+
+/* Navegação da Sidebar */
+.navMenu {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  margin-top: 2rem; /* */
 }
 
-.navItem {
+.navLink {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
-  border-radius: 12px;
-  border: none;
-  background: transparent;
-  color: var(--text-muted);
-  font-weight: 600;
+  color: #94a3b8;
+  text-decoration: none;
+  border-radius: 8px;
   font-size: 0.95rem;
-  cursor: pointer;
+  font-weight: 500;
   transition: all 0.2s ease;
-  width: 100%;
-  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 100%; /* */
 }
 
-.navItem span {
-  white-space: nowrap;
+.navLink:hover, .navLink.active {
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8; /* */
 }
 
-.navItem:hover {
-  background: var(--hover-nav-link);
-  color: var(--text-main);
-}
-
-.navItem.active {
-  background: var(--accent-color);
-  color: #fff;
-}
-
-.navDivider {
+.divider {
   height: 1px;
-  background: var(--border-color);
-  margin: 15px 0;
+  background: #1e293b;
+  margin: 1rem 0; /* */
 }
 
-.logout {
+.logoutBtn {
   margin-top: auto;
   color: #ef4444;
+  border-top: 1px solid #1e293b;
+  padding-top: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500; /* */
 }
 
-.logout:hover {
-  background: rgba(239, 68, 68, 0.1);
-}
-
-/* --- CONTEÚDO PRINCIPAL --- */
-.mainContent {
+/* --- ÁREA DE CONTEÚDO --- */
+.mainWrapper {
+  margin-left: 280px; /* Alinhado à largura da sidebar */
   flex: 1;
-  padding: 2.5rem 4rem;
-  max-width: 1400px;
-  margin: 0 auto;
   width: 100%;
 }
 
-.topHeader {
+.topBar {
+  height: 70px;
+  background: var(--header-bg); /* Glassmorphism */
+  backdrop-filter: blur(12px); /* */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
-  gap: 20px;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--border-color); /* */
+  position: sticky;
+  top: 0;
+  z-index: 90;
 }
 
-.welcome h1 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
-  color: var(--text-main);
+.content {
+  padding: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto; /* */
 }
 
-.welcome p {
-  color: var(--text-muted);
-}
-
-.createBtn {
-  background: var(--accent-color);
-  color: #fff;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: transform 0.2s, filter 0.2s;
-}
-
-.createBtn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-}
-
-/* --- GRID DE MÉTRICAS --- */
+/* --- ANALYTICS CARDS --- */
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0; /* */
 }
 
 .statCard {
-  background: var(--bg-secondary);
+  background: var(--bg-secondary-card); /* */
+  padding: 1.5rem;
+  border-radius: 16px;
   border: 1px solid var(--border-color);
-  padding: 24px;
-  border-radius: 20px;
-  transition: border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease; /* */
 }
 
 .statCard:hover {
-  border-color: var(--accent-color);
-}
-
-.statHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 15px;
+  transform: translateY(-5px); /* */
 }
 
 .statIcon {
-  color: var(--accent-color);
-  background: rgba(37, 99, 235, 0.1);
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 12px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.trend {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
-  padding: 4px 8px;
-  border-radius: 6px;
-}
+.blue { background: #e0f2fe; color: #0284c7; }
+.green { background: #dcfce7; color: #16a34a; }
+.purple { background: #f3e8ff; color: #9333ea; }
+.orange { background: #ffedd5; color: #ea580c; }
 
-.statBody h3 {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 5px;
-}
+.statInfo p { color: var(--text-muted); font-size: 0.875rem; margin-bottom: 4px; }
+.statInfo strong { font-size: 1.5rem; font-weight: 700; }
+.trendLabel { display: flex; align-items: center; gap: 4px; font-size: 0.75rem; color: #10b981; margin-top: 4px; }
 
-.statBody strong {
-  font-size: 1.6rem;
-  color: var(--text-main);
-}
-
-/* --- CARDS DE PROJETOS --- */
-.projectsGrid {
+/* --- PROPERTY GRID --- */
+.propertiesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  gap: 2rem;
+  margin-top: 1.5rem; /* */
 }
 
-.projectCard {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+.propertyCard {
+  background: var(--bg-secondary-card);
   border-radius: 20px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  border: 1px solid var(--border-color);
+  transition: 0.3s ease; /* */
 }
 
-.projectCard:hover {
-  transform: translateY(-5px);
-}
-
-.projectThumb {
-  height: 180px;
-  background: linear-gradient(45deg, #1e293b, #0f172a);
-  position: relative;
+.propertyImage {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative; /* */
 }
 
 .statusBadge {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: #10b981;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.8);
   color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
+  padding: 5px 12px;
+  border-radius: 8px;
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 600;
+  backdrop-filter: blur(4px); /* */
 }
 
-.projectBody {
-  padding: 20px;
+.propertyInfo {
+  padding: 1.5rem;
 }
 
-.url {
-  display: block;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin: 8px 0 20px;
-}
+.price { color: var(--accent-color); font-weight: 700; font-size: 1.25rem; margin: 8px 0; }
+
+.propertyMeta { font-size: 0.85rem; color: var(--text-muted); }
 
 .cardActions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color); /* */
 }
 
-.editBtn, .viewBtn {
-  flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 0.9rem;
+.actionIcon {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-main);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   transition: 0.2s;
 }
 
-.editBtn {
+.actionIcon:hover {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color); /* */
+}
+
+/* Botão Adicionar */
+.addPropertyCard {
+  border: 2px dashed #cbd5e1;
+  background: transparent;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  gap: 1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: 0.3s; /* */
+}
+
+.addPropertyCard:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background: rgba(56, 189, 248, 0.05); /* */
+}
+
+/* --- BOTÕES TIPO DASHBOARD --- */
+.primaryBtn {
   background: var(--accent-color);
   color: white;
   border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer; /* */
 }
 
-.viewBtn {
+.previewBtn {
   background: transparent;
   color: var(--text-main);
   border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.viewBtn:hover {
-  background: var(--hover-nav-link);
-}
-
-/* --- RESPONSIVIDADE E MENU MOBILE --- */
-
+/* --- MOBILE & RESPONSIVIDADE --- */
 .mobileMenuToggle {
-  display: none; /* Escondido por padrão */
-}
-
-.overlay {
   display: none;
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(5px);
-  z-index: 998;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #38bdf8;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+  z-index: 1000;
+  cursor: pointer; /* */
 }
 
-@media (max-width: 1100px) {
-  .mainContent {
-    padding: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .mobileMenuToggle {
-    display: flex;
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    z-index: 1001;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-  }
-
+@media (max-width: 1024px) {
   .sidebar {
-    position: fixed;
-    left: -100%; /* Fora da tela */
-    top: 0;
-    width: 280px;
-    height: 100vh;
-    box-shadow: 15px 0 40px rgba(0, 0, 0, 0.5);
+    transform: translateX(-100%); /* Esconde a sidebar */
   }
 
   .sidebarOpen {
-    left: 0; /* Desliza para dentro */
+    transform: translateX(0); /* Mostra no mobile se ativo */
+    width: 280px;
   }
 
-  .overlay {
-    display: block;
+  .mainWrapper {
+    margin-left: 0; /* Remove margem lateral no mobile */
   }
 
-  .mainContent {
-    padding: 1.5rem;
-    padding-bottom: 100px; /* Espaço para o botão flutuante */
+  .mobileMenuToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* */
   }
+}
 
-  .topHeader {
+@media (max-width: 640px) {
+  .topBar {
     flex-direction: column;
-    align-items: flex-start;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
   }
 
-  .createBtn {
+  .userActions {
     width: 100%;
-    justify-content: center;
+    display: flex;
+    gap: 10px;
   }
 
-  .statsGrid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .userActions button {
+    flex: 1;
+    font-size: 0.8rem;
   }
 
-  .projectsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .projectCard {
-    max-width: 100%;
+  .content {
+    padding: 1.5rem;
   }
 }

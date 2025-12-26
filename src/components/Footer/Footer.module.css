@@ -3,6 +3,7 @@
   border-top: 1px solid var(--border-color);
   padding: 80px 20px 30px;
   color: var(--text-main);
+  font-family: 'Inter', sans-serif; /* Consistência com a identidade visual */
 }
 
 .container {
@@ -19,45 +20,63 @@
 
 /* --- COLUNA BRANDING --- */
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-bottom: 20px;
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Garante alinhamento à esquerda */
+  justify-content: flex-start; /* Alinha o conteúdo ao topo */
+  gap: 20px;
+  padding-top: 0; /* Remove qualquer padding superior que cause o desnível */
 }
 
-.logo span {
-  color: var(--accent-color);
+.logo {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 0.85; /* Feedback sutil de clique */
+}
+
+/* Ajuste do ícone para não herdar margens externas do Header */
+.logo :global(.me-2) {
+  margin: 0 !important;
 }
 
 .description {
   color: var(--text-muted);
   line-height: 1.6;
-  margin-bottom: 25px;
-  max-width: 300px;
+  font-size: 0.95rem;
+  max-width: 320px; /* Limite para não esticar o texto */
 }
 
 .socials {
   display: flex;
-  gap: 15px;
+  gap: 12px;
 }
 
 .socials a {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   background: var(--bg-primary);
   border: 1px solid var(--border-color);
-  border-radius: 10px;
+  border-radius: 12px; /* Border-radius seguindo o padrão dos botões */
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .socials a:hover {
   color: var(--accent-color);
   border-color: var(--accent-color);
-  transform: translateY(-3px);
+  transform: translateY(-4px); /* Elevação sutil */
+  background: var(--hover-nav-link);
 }
 
 /* --- COLUNAS DE LINKS --- */
@@ -66,6 +85,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 25px;
+  color: var(--text-main);
 }
 
 .linksCol ul {
@@ -80,11 +100,13 @@
 .linksCol ul li a {
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.2s;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
 
 .linksCol ul li a:hover {
   color: var(--accent-color);
+  padding-left: 5px; /* Efeito de indicação ao passar o mouse */
 }
 
 /* --- NEWSLETTER E CONTATO --- */
@@ -92,11 +114,12 @@
 .contactCol p {
   color: var(--text-muted);
   margin-bottom: 20px;
+  font-size: 0.95rem;
 }
 
 .newsletter {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 25px;
 }
 
@@ -104,10 +127,16 @@
   flex: 1;
   background: var(--bg-primary);
   border: 1px solid var(--border-color);
-  padding: 12px 15px;
-  border-radius: 8px;
+  padding: 12px 16px;
+  border-radius: 10px;
   color: var(--text-main);
+  font-size: 0.9rem;
   outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter input:focus {
+  border-color: var(--accent-color);
 }
 
 .newsletter button {
@@ -115,20 +144,21 @@
   color: white;
   border: none;
   padding: 0 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
-  transition: filter 0.2s;
+  transition: all 0.2s ease;
 }
 
 .newsletter button:hover {
   filter: brightness(1.1);
+  transform: scale(1.02);
 }
 
 .contactInfo {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   color: var(--text-muted);
   font-size: 0.9rem;
 }
@@ -136,7 +166,7 @@
 .contactInfo span {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 /* --- BARRA INFERIOR --- */
@@ -172,9 +202,17 @@
   }
 
   .brandCol, .contactCol {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: center; /* Centraliza para melhor UX no mobile */
+  }
+
+  .logo {
+    justify-content: center;
+  }
+
+  /* Ajuste de escala para o LogoIcon grande no mobile */
+  .logo :global(div) {
+    width: 120px !important;
+    height: auto !important;
   }
 
   .description {
@@ -186,9 +224,13 @@
     width: 100%;
   }
 
+  .newsletter button {
+    padding: 14px;
+  }
+
   .bottomBar {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     text-align: center;
   }
 }
