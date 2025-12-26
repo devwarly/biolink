@@ -28,9 +28,13 @@ export default function App() {
                 <Header />
                 <main>
                     <Routes>
+                        {/* Rota principal */}
                         <Route path="/" element={<LandingPage />} />
+
+                        {/* Rota de login */}
                         <Route path="/login" element={<div>Página de Login</div>} />
 
+                        {/* SOLUÇÃO: Captura /biolink/ e qualquer outra variação e manda para a Home */}
                         <Route path="*" element={<LandingPage />} />
                     </Routes>
                 </main>
