@@ -7,9 +7,7 @@ export const Hero = () => {
         <section className={styles.heroContainer} id='inicio'>
             <div className={styles.wrapper}>
 
-                {/* LADO ESQUERDO: TEXTO E CONTEÚDO */}
                 <div className={styles.textSide}>
-                    <span className={styles.badge}>Disponível para Corretores Pro</span>
 
                     <h1 className={styles.mainTitle}>
                         Transforme seu Instagram em sua <br />

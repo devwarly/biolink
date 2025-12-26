@@ -1,10 +1,19 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext';
 import { Button } from '../Button/Button';
 import { PremiumButton } from '../Button/PremiumButton';
-import { LogIn, UserPlus } from 'lucide-react';
+import { LogIn } from 'lucide-react';
 import './Header.css';
+
+// Mapeamento de IDs para nomes legíveis
+const sectionNames: Record<string, string> = {
+    inicio: 'Início',
+    solucoes: 'Soluções',
+    templates: 'Templates',
+    recursos: 'Recursos',
+    precos: 'Preços'
+};
 
 export function Header() {
     const { theme, setTheme } = useTheme();
@@ -13,21 +22,21 @@ export function Header() {
     const [activeSection, setActiveSection] = useState('inicio');
     const navigate = useNavigate();
 
-    // Referência para saber se o scroll foi disparado por um clique
+    // Referência para impedir que o Observer mude a seção ativa durante um scroll disparado por clique
     const isScrollingRef = useRef(false);
 
-    const sectionIds = ['inicio', 'solucoes', 'templates', 'recursos', 'precos'];
+    const sectionIds = Object.keys(sectionNames);
 
     useEffect(() => {
         const observerOptions = {
             root: null,
-            // Ajuste fino: só ativa se a seção estiver bem no topo
+            // Ajuste: ativa a seção quando ela ocupa a parte superior da tela
             rootMargin: '-10% 0px -85% 0px',
             threshold: 0
         };
 
         const observerCallback = (entries: IntersectionObserverEntry[]) => {
-            // Se estivermos no meio de um scroll de clique, não mudamos via observer
+            // Se o usuário clicou em um link, ignoramos a atualização automática temporariamente
             if (isScrollingRef.current) return;
 
             entries.forEach((entry) => {
@@ -45,7 +54,7 @@ export function Header() {
         });
 
         return () => observer.disconnect();
-    }, []);
+    }, [sectionIds]);
 
     const handleThemeChange = (newTheme: 'light' | 'dark') => {
         setTheme(newTheme);
@@ -53,11 +62,24 @@ export function Header() {
         setIsMobileMenuOpen(false);
     };
 
-    const handleNavLinkClick = (id: string) => {
+    const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        e.preventDefault(); // Impede o comportamento padrão da âncora
+        
         setIsMobileMenuOpen(false);
         setActiveSection(id);
+        
+        // Bloqueia o observer para não "saltar" entre estados durante a animação
         isScrollingRef.current = true;
 
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+
+        // Libera o observer após o término da animação de scroll
         setTimeout(() => {
             isScrollingRef.current = false;
         }, 1000);
@@ -66,7 +88,7 @@ export function Header() {
     return (
         <header className="header-container">
             <div className="header-content">
-                <Link to="/" className="logo" onClick={() => window.scrollTo(0, 0)}>
+                <Link to="/" className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                     Software<span>House</span>
                 </Link>
 
@@ -82,7 +104,9 @@ export function Header() {
                     <i className={`bi ${isMobileMenuOpen ? 'bi-x' : 'bi-list'}`}></i>
                 </button>
 
-                {isMobileMenuOpen && <div className="menu-backdrop-mobile" onClick={() => setIsMobileMenuOpen(false)} />}
+                {isMobileMenuOpen && (
+                    <div className="menu-backdrop-mobile" onClick={() => setIsMobileMenuOpen(false)} />
+                )}
 
                 <nav className={`nav-menu ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
                     <div className="header-actions mobyle-only">
@@ -103,17 +127,16 @@ export function Header() {
                             Cadastre-se
                         </Button>
                     </div>
+
                     <div className="nav-links">
                         {sectionIds.map((id) => (
                             <a
                                 key={id}
                                 href={`#${id}`}
                                 className={activeSection === id ? 'active' : ''}
-                                onClick={(e) => {
-                                    handleNavLinkClick(id);
-                                }}
+                                onClick={(e) => handleNavLinkClick(e, id)}
                             >
-                                {id === 'precos' ? 'Preços' : id.charAt(0).toUpperCase() + id.slice(1)}
+                                {sectionNames[id]}
                             </a>
                         ))}
                     </div>

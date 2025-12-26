@@ -69,8 +69,8 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: var(--bg-secondary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-secondary-card);
+  border: 1px solid var(--border-color);
   color: var(--text-main);
   padding: 12px;
   border-radius: 14px;

@@ -66,7 +66,7 @@
 .iconWrapper {
   width: 60px;
   height: 60px;
-  background: var(--bg-primary);
+  background: var(--bg-secondary-card);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   display: flex;

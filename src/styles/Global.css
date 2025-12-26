@@ -1,57 +1,67 @@
-/* Definição dos Temas */
 :root {
-  /* Tema Claro (Default) */
-  --bg-primary: radial-gradient(circle at top right, #ffffff, #a7a7ad);
-  --bg-secondary: #f0f0f09c;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
-  --accent-color: #2563eb;
-  --header-bg: #eeeeeeec;
-  --max-width-principal: 1500px;
-  --hover-nav-link: #dfdfdf46;
-  --btn-color: #2563eb;
-  --hover-btn-color: #1e40af;
-  --border-btn-enn: #00000034;
-  --bg-header-mobile: rgb(255, 255, 255);
+
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-secondary-card: #ffffff;
+
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+
+    --border-color: #e2e8f0;
+    --accent-color: #2563eb;
+
+    --header-bg: rgba(255, 255, 255, 0.8);
+    --bg-header-mobile: #ffffff;
+
+    --hover-nav-link: rgba(37, 99, 235, 0.08);
+    --border-btn-enn: rgba(0, 0, 0, 0.05);
+
+    --max-width-principal: 1440px;
+    --hover-btn-color: #1e40af;
+    --btn-color: #3b82f6;
 }
 
 [data-theme='dark'] {
-  /* Tema Escuro */
-  --bg-primary: radial-gradient(circle at top right, rgb(15, 20, 32), #000000);
-  --bg-secondary: rgba(15, 20, 32, 0.938);
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
-  --border-color: #334155;
-  --accent-color: #3b82f6;
-  --header-bg: rgba(15, 20, 32, 0.938);
-  --hover-nav-link: #ffffff09;
-  --border-btn-enn: #ffffff34;
-  --bg-header-mobile: rgb(15, 20, 32);
+
+    --bg-primary: #050714;
+    --bg-secondary: #0f172a;
+    --bg-secondary-card: #1e293b;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --accent-color: #0565e4;
+    --header-bg: rgba(2, 6, 23, 0.8);
+    --bg-header-mobile: #0f172a;
+    --hover-nav-link: rgba(40, 81, 99, 0.253);
+    --border-btn-enn: rgba(255, 255, 255, 0.03);
+    --hover-btn-color: #0747a6;
+    --btn-color: #2563eb;
 }
 
 /* Reset e Estilos Globais */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Suaviza a troca de tema */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Suaviza a troca de tema */
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 section[id] {
-  scroll-margin-top: 100px; /* Ajuste esse valor para a altura do seu Header */
+    scroll-margin-top: 100px;
+    /* Ajuste esse valor para a altura do seu Header */
 }
 
 body {
-  background: var(--bg-primary);
-  color: var(--text-main);
-  font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
 }
 
 #precos {
-    min-height: 80vh; 
+    min-height: 80vh;
 }

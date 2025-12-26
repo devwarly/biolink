@@ -29,21 +29,6 @@
     flex-direction: column;
 }
 
-.badge {
-    background-color: var(--bg-secondary);
-    color: var(--accent-color);
-    padding: 8px 18px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    border: 1px solid var(--border-color);
-    display: inline-block;
-    align-self: flex-start; /* Evita que ocupe a largura toda */
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
 .mainTitle {
     /* Fonte fluida: Ajusta entre 2.5rem e 4.5rem baseada na largura da tela */
     font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -180,10 +165,7 @@
         width: 100%;
     }
 
-    .badge {
-        align-self: flex-start;
-        margin-left: 0;
-    }
+   
 
     .mainTitle {
         max-width: 100%;
@@ -241,12 +223,6 @@
         margin-bottom: 35px;
     }
 
-    .badge {
-        align-self: center;
-        margin-left: 0;
-        scale: 0.8;
-    }
-
     .buttonGroup {
         flex-direction: column;
         width: 100%;
@@ -260,7 +236,8 @@
     }
 
     .trustSection {
-        flex-direction: column;
+        
         gap: 10px;
+        justify-content: flex-start;
     }
 }
