@@ -285,3 +285,16 @@
         grid-template-columns: 1fr;
     }
 }
+
+.socialGridFull {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+.socialGridFull .socialBtn {
+    width: 100%;
+    padding: 14px;
+    background: #fff;
+    color: #000;
+}

@@ -1,0 +1,45 @@
+.wrapper { padding: 20px 0; }
+.pickerHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.saveBtn { background: var(--accent-color); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; }
+
+.templateGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+
+.templateCard { 
+  background: var(--bg-secondary-card); 
+  border: 2px solid var(--border-color); 
+  border-radius: 20px; 
+  overflow: hidden; 
+  cursor: pointer; 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.templateCard:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+.templateCard.active { border-color: var(--accent-color); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+.templateCard.locked { cursor: not-allowed; }
+
+.previewBox { height: 180px; background: #f1f5f9; position: relative; padding: 20px; display: flex; justify-content: center; }
+
+/* Mockups visuais dos templates baseados na documentação */
+.clean { background: #ffffff; }
+.dark_elegance { background: #0f172a; }
+.minimalist { background: #fafafa; }
+.modern_real { background: linear-gradient(135deg, #e2e8f0 0%, #ffffff 100%); }
+
+.lockBadge { 
+  position: absolute; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); 
+  display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; gap: 8px; z-index: 5;
+}
+
+.checkBadge {
+  position: absolute; top: 12px; right: 12px; background: var(--accent-color); color: white;
+  padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; display: flex; align-items: center; gap: 5px;
+}
+
+.cardFooter { padding: 16px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: flex-start; }
+.info strong { display: block; font-size: 0.95rem; margin-bottom: 4px; }
+.info p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
+
+.freeTag, .premiumTag { font-size: 0.65rem; font-weight: 800; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; }
+.freeTag { background: #e2e8f0; color: #475569; }
+.premiumTag { background: #fef3c7; color: #d97706; display: flex; align-items: center; gap: 4px; }

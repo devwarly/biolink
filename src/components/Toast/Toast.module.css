@@ -1,0 +1,81 @@
+.wrapper {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 300px;
+  max-width: 450px;
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-secondary-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  animation: slideIn 0.3s ease forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.success { border-left: 4px solid #10b981; }
+.success .icon { color: #10b981; }
+
+.error { border-left: 4px solid #ef4444; }
+.error .icon { color: #ef4444; }
+
+.warning { border-left: 4px solid #f59e0b; }
+.warning .icon { color: #f59e0b; }
+
+.info { border-left: 4px solid var(--accent-color); }
+.info .icon { color: var(--accent-color); }
+
+.text {
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.closeBtn:hover { background: rgba(0,0,0,0.05); color: var(--text-main); }
+
+/* Barra de progresso para indicar tempo restante */
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.2;
+  width: 100%;
+  animation: progress 4s linear forwards;
+}
+
+@keyframes progress {
+  from { width: 100%; }
+  to { width: 0%; }
+}

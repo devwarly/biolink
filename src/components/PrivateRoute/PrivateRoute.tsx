@@ -1,18 +1,27 @@
-import { ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useEffect, useState, ReactNode } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { supabase } from '../../lib/supabase';
 
-interface PrivateRouteProps {
-  children: ReactNode;
-}
+export const PrivateRoute = ({ children }: { children: ReactNode }) => {
+    const [session, setSession] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
 
-export const PrivateRoute = ({ children }: PrivateRouteProps) => {
-  // Simulação: verifica se o token existe no localStorage
-  const isAuthenticated = localStorage.getItem('sb-token') !== null;
+    useEffect(() => {
+        // Busca a sessão que o App já deve ter validado
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setSession(session);
+            setLoading(false);
+        });
 
-  if (!isAuthenticated) {
-    // Redireciona para login e limpa o histórico para evitar voltar ao dashboard deslogado
-    return <Navigate to="/login" replace />;
-  }
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            setSession(session);
+            setLoading(false);
+        });
 
-  return <>{children}</>;
+        return () => subscription.unsubscribe();
+    }, []);
+
+    if (loading) return null;
+    // Se não houver sessão, redireciona. O replace impede o "botão voltar" de quebrar o fluxo.
+    return session ? <>{children}</> : <Navigate to="/login" replace />;
 };
