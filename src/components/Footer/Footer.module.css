@@ -1,0 +1,194 @@
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 80px 20px 30px;
+  color: var(--text-main);
+}
+
+.container {
+  max-width: var(--max-width-principal);
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 0.8fr 1.5fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+/* --- COLUNA BRANDING --- */
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.logo span {
+  color: var(--accent-color);
+}
+
+.description {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 300px;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+}
+
+.socials a {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.socials a:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+/* --- COLUNAS DE LINKS --- */
+
+.linksCol h3, .contactCol h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.linksCol ul {
+  list-style: none;
+  padding: 0;
+}
+
+.linksCol ul li {
+  margin-bottom: 12px;
+}
+
+.linksCol ul li a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.linksCol ul li a:hover {
+  color: var(--accent-color);
+}
+
+/* --- NEWSLETTER E CONTATO --- */
+
+.contactCol p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.newsletter {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.newsletter input {
+  flex: 1;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: var(--text-main);
+  outline: none;
+}
+
+.newsletter button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.newsletter button:hover {
+  filter: brightness(1.1);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.contactInfo span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- BARRA INFERIOR --- */
+
+.bottomBar {
+  padding-top: 30px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 60px 20px 30px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .brandCol, .contactCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
+  .newsletter {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

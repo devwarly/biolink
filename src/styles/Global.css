@@ -1,0 +1,53 @@
+/* Definição dos Temas */
+:root {
+  /* Tema Claro (Default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --accent-color: #2563eb;
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --max-width-principal: 1500px;
+  --hover-nav-link: #dfdfdf46;
+  --btn-color: #2563eb;
+  --hover-btn-color: #1e40af;
+}
+
+[data-theme='dark'] {
+  /* Tema Escuro */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --accent-color: #3b82f6;
+  --header-bg: rgba(15, 23, 42, 0.9);
+  --hover-nav-link: #ffffff09;
+}
+
+/* Reset e Estilos Globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Suaviza a troca de tema */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 100px; /* Ajuste esse valor para a altura do seu Header */
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+}
+
+#precos {
+    min-height: 80vh; 
+}

@@ -1,0 +1,176 @@
+.container {
+  padding: 120px 20px;
+  max-width: var(--max-width-principal);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.badge {
+  color: var(--accent-color);
+  background: rgba(37, 99, 235, 0.08);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(37, 99, 235, 0.15);
+}
+
+.title {
+  font-size: clamp(1.5rem, 5vw, 3.2rem);
+  margin-top: 24px;
+  color: var(--text-main);
+  font-weight: 850;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.title span {
+  color: var(--accent-color);
+  background: linear-gradient(90deg, var(--accent-color), #2dd4bf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  max-width: 550px;
+  margin: 20px auto 0;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* --- GRID E CARDS --- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px;
+}
+
+.card {
+  background: var(--bg-secondary);
+  border-radius: 28px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  border-color: var(--accent-color);
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.25);
+}
+
+.imageWrapper {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  background: #f0f0f0; /* Previne flicker enquanto a imagem carrega */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover .image {
+  transform: scale(1.1) rotate(1deg); /* Leve rotação dá um ar mais orgânico */
+}
+
+/* --- OVERLAY LUXUOSO --- */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.9) 0%,
+    rgba(15, 23, 42, 0.4) 100%
+  );
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transition: all 0.4s ease;
+  padding: 30px;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+/* Botões do Overlay */
+.btnPreview, .btnUse {
+  width: 100%;
+  max-width: 200px;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.btnPreview {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btnPreview:hover {
+  background: white;
+  color: #000;
+}
+
+.btnUse {
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+}
+
+.btnUse:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.5);
+}
+
+/* --- INFO DO CARD --- */
+
+.info {
+  padding: 28px;
+  background: var(--bg-secondary);
+}
+
+.category {
+  color: var(--accent-color);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.info h3 {
+  font-size: 1.4rem;
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}

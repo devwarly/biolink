@@ -1,0 +1,250 @@
+/* Precos.module.css */
+
+.container {
+  padding: 120px 20px;
+  max-width: var(--max-width-principal);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.badge {
+  color: var(--accent-color);
+  background: rgba(37, 99, 235, 0.08);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  display: inline-block;
+}
+
+.title {
+  font-size: clamp(1.5rem, 5vw, 3.2rem);
+  margin-top: 24px;
+  color: var(--text-main);
+  font-weight: 850;
+  letter-spacing: -1px;
+}
+
+.title span {
+  color: var(--accent-color);
+  background: linear-gradient(90deg, var(--accent-color), #2dd4bf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 20px auto 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* --- GRID --- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  /* Estica os itens da grid para terem a mesma altura na linha */
+  align-items: stretch;
+}
+
+/* --- CARDS --- */
+
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 45px 40px;
+  border-radius: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  
+  /* Flexbox vertical para controlar o alinhamento interno */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-color);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Destaque para o plano Pro (Central) */
+.cardPremium {
+  border: 2px solid var(--accent-color);
+  background: var(--bg-primary); /* Leve variação para destacar */
+  box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.15);
+  z-index: 2;
+}
+
+@media (min-width: 1100px) {
+  .cardPremium {
+    transform: scale(1.05);
+  }
+  .cardPremium:hover {
+    transform: scale(1.08) translateY(-8px);
+  }
+}
+
+.cardTag {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: var(--accent-color);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cardHeader {
+  margin-bottom: 35px;
+  flex-shrink: 0;
+}
+
+.iconBox {
+  width: 54px;
+  height: 54px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  margin-bottom: 25px;
+  box-shadow: 0 8px 15px -5px rgba(0,0,0,0.1);
+}
+
+.cardHeader h3 {
+  font-size: 1.7rem;
+  color: var(--text-main);
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  color: var(--text-main);
+}
+
+.price span { font-size: 1.25rem; font-weight: 600; }
+.price strong { font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; }
+.price small { color: var(--text-muted); font-weight: 500; font-size: 1rem; }
+
+/* --- LISTA DE RECURSOS (O segredo do alinhamento) --- */
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 45px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  
+  /* Faz a lista crescer para ocupar o espaço e empurrar o botão para baixo */
+  flex-grow: 1; 
+}
+
+.featureList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.checkIcon {
+  color: var(--accent-color);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* --- BOTÃO --- */
+
+.btnPlan {
+  width: 100%;
+  padding: 20px;
+  border-radius: 18px;
+  border: 2px solid var(--border-color);
+  background: transparent;
+  color: var(--text-main);
+  font-weight: 800;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: auto; /* Garante o alinhamento na base */
+  flex-shrink: 0;
+}
+
+.btnPlanActive {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+}
+
+.btnPlanActive:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.6);
+  transform: translateY(-4px);
+}
+
+.btnPlan:not(.btnPlanActive):hover {
+  background: var(--text-main);
+  color: var(--bg-primary);
+  border-color: var(--text-main);
+  transform: translateY(-4px);
+}
+
+/* --- EFEITO DE GLOW --- */
+
+.glowEffect {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 1100px) {
+  .grid {
+    gap: 40px;
+  }
+  
+  .card {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 80px 15px;
+  }
+  
+  .price strong {
+    font-size: 3rem;
+  }
+}

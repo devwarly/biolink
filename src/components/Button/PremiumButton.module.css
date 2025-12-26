@@ -1,0 +1,43 @@
+.premiumBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent; /* Remove qualquer fundo */
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: transform 0.2s ease;
+  outline: none;
+}
+
+.premiumBtn:hover {
+  transform: scale(1.05); /* Leve pulsação ao passar o mouse */
+  filter: brightness(1.2);
+}
+
+.text {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  
+  /* Efeito de Duas Cores (Gradiente no Texto) */
+  background: linear-gradient(135deg, #ff9d00 0%, #ff6b00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  display: inline-block;
+}
+
+.icon {
+  /* Aplica o mesmo gradiente ao ícone */
+  stroke: #ff9d00; /* Cor base para navegadores que não suportam gradiente em SVG */
+  
+  /* Para ícones Lucide, usamos o filter para dar o tom exato do texto */
+  filter: drop-shadow(0px 2px 4px rgba(255, 107, 0, 0.2));
+}
+
+/* Opcional: Efeito de brilho suave no hover */
+.premiumBtn:hover .icon {
+  filter: drop-shadow(0 0 8px rgba(255, 157, 0, 0.6));
+}
