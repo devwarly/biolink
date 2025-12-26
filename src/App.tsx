@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom'; // Importação corrigida aqui
 import { Header } from './components/Header/Header';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { Hero } from './components/Hero/Hero';
@@ -9,6 +9,7 @@ import { Precos } from './components/Precos/Precos';
 import { Footer } from './components/Footer/Footer';
 import './styles/Global.css';
 
+// Componente que agrupa todas as seções da Home
 const LandingPage = () => (
     <>
         <Hero />
@@ -17,25 +18,23 @@ const LandingPage = () => (
         <Recursos />
         <Precos />
         <Footer />
-        
     </>
 );
 
 export default function App() {
     return (
         <ThemeProvider>
-            <BrowserRouter>
+            <HashRouter>
                 <Header />
                 <main>
                     <Routes>
-                        {/* A rota raiz agora carrega todas as seções juntas */}
                         <Route path="/" element={<LandingPage />} />
-                        
-                        {/* Rotas para páginas que NÃO fazem parte da home */}
                         <Route path="/login" element={<div>Página de Login</div>} />
+
+                        <Route path="*" element={<LandingPage />} />
                     </Routes>
                 </main>
-            </BrowserRouter>
+            </HashRouter>
         </ThemeProvider>
     );
 }

@@ -10,7 +10,7 @@ export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('inicio');
-    
+
     // Referência para saber se o scroll foi disparado por um clique
     const isScrollingRef = useRef(false);
 
@@ -20,7 +20,7 @@ export function Header() {
         const observerOptions = {
             root: null,
             // Ajuste fino: só ativa se a seção estiver bem no topo
-            rootMargin: '-10% 0px -85% 0px', 
+            rootMargin: '-10% 0px -85% 0px',
             threshold: 0
         };
 
@@ -60,13 +60,13 @@ export function Header() {
         // Reativa o observer após a animação do scroll acabar
         setTimeout(() => {
             isScrollingRef.current = false;
-        }, 1000); 
+        }, 1000);
     };
 
     return (
         <header className="header-container">
             <div className="header-content">
-                <Link to="/" className="logo" onClick={() => window.scrollTo(0,0)}>
+                <Link to="/" className="logo" onClick={() => window.scrollTo(0, 0)}>
                     Software<span>House</span>
                 </Link>
 
@@ -89,9 +89,12 @@ export function Header() {
                         {sectionIds.map((id) => (
                             <a
                                 key={id}
-                                href={`#${id}`}
+                                href={`#${id}`} // O navegador buscará o elemento com id="${id}"
                                 className={activeSection === id ? 'active' : ''}
-                                onClick={() => handleNavLinkClick(id)}
+                                onClick={(e) => {
+                                    // Opcional: Garante que o Router não tente processar isso como uma nova rota
+                                    handleNavLinkClick(id);
+                                }}
                             >
                                 {id === 'precos' ? 'Preços' : id.charAt(0).toUpperCase() + id.slice(1)}
                             </a>
