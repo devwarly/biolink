@@ -12,14 +12,14 @@
 }
 
 .premiumBtn:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     /* Leve pulsação ao passar o mouse */
-    filter: brightness(1.2);
+    filter: brightness(1.1);
 }
 
 .text {
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 0.3px;
 
     /* Efeito de Duas Cores (Gradiente no Texto) */

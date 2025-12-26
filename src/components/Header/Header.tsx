@@ -51,13 +51,11 @@ export function Header() {
         setIsMobileMenuOpen(false);
     };
 
-    // Função para lidar com o clique no menu
     const handleNavLinkClick = (id: string) => {
         setIsMobileMenuOpen(false);
-        setActiveSection(id); // Muda o estado ativo IMEDIATAMENTE
+        setActiveSection(id);
         isScrollingRef.current = true;
 
-        // Reativa o observer após a animação do scroll acabar
         setTimeout(() => {
             isScrollingRef.current = false;
         }, 1000);
@@ -89,10 +87,9 @@ export function Header() {
                         {sectionIds.map((id) => (
                             <a
                                 key={id}
-                                href={`#${id}`} // O navegador buscará o elemento com id="${id}"
+                                href={`#${id}`}
                                 className={activeSection === id ? 'active' : ''}
                                 onClick={(e) => {
-                                    // Opcional: Garante que o Router não tente processar isso como uma nova rota
                                     handleNavLinkClick(id);
                                 }}
                             >
@@ -124,6 +121,11 @@ export function Header() {
                                 </li>
                             </ul>
                         )}
+                    </div>
+
+                    <div className="header-actions mobyle-only">
+                        <Button variant="ghost" size="sm">Entrar</Button>
+                        <Button variant="primary" size="sm">Começar</Button>
                     </div>
                 </nav>
 

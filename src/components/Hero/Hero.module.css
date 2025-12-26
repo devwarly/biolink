@@ -161,60 +161,59 @@
     margin-left: 0;
 }
 
-/* --- RESPONSIVIDADE (TABLETS E TELAS MÉDIAS) --- */
 
 @media (max-width: 1100px) {
     .wrapper {
-        grid-template-columns: 1fr; /* Empilha as colunas */
+        grid-template-columns: 1fr;
         gap: 50px;
-        text-align: left; /* Garante o texto alinhado à esquerda */
+        text-align: left;
     }
 
     .heroContainer {
-        padding-top: 140px; /* Espaço para o Header */
+        padding-top: 140px;
         min-height: auto;
-        justify-content: flex-start; /* Alinha o conteúdo do container no topo/esquerda */
+        justify-content: flex-start;
     }
 
     .textSide {
-        align-items: flex-start; /* Alinha badge, título e botões à esquerda */
+        align-items: flex-start;
         width: 100%;
     }
 
     .badge {
-        align-self: flex-start; /* Badge colada na esquerda */
+        align-self: flex-start;
         margin-left: 0;
     }
 
     .mainTitle {
-        max-width: 100%; /* Permite que o título use o espaço necessário */
+        max-width: 95%;
         text-align: left;
         align-items: flex-start;
     }
 
     .subText {
-        margin: 0 0 35px 0; /* Remove o auto das laterais para não centralizar */
+        margin: 0 0 35px 0;
         text-align: left;
-        max-width: 90%; /* Evita que o texto encoste na borda direita da tela */
+        max-width: 90%;
     }
 
     .featureGrid {
-        width: 100%;
-        margin: 0 0 40px 0; /* Alinha a grade de benefícios à esquerda */
+        grid-template-columns: 1fr 1fr;
+        margin: 0 0 40px 0;
         justify-content: flex-start;
     }
 
     .buttonGroup {
-        justify-content: flex-start; /* Botões colados na esquerda */
+        justify-content: flex-start;
         width: 100%;
     }
 
     .trustSection {
-        justify-content: flex-start; /* Prova social colada na esquerda */
+        justify-content: flex-start;
     }
 }
 
-/* --- RESPONSIVIDADE (SMARTPHONES) --- */
+
 
 @media (max-width: 600px) {
     .heroContainer {
@@ -222,7 +221,7 @@
     }
 
     .mainTitle {
-        font-size: 2.2rem; /* Tamanho otimizado para mobile */
+        font-size: 2.2rem;
         max-width: 100%;
         line-height: 1.1;
     }
@@ -239,6 +238,12 @@
         width: 100%;
         max-width: 100%;
         margin-bottom: 35px;
+    }
+
+    .badge {
+        align-self: center;
+        margin-left: 0;
+        scale: 0.8;
     }
 
     .buttonGroup {
