@@ -1,86 +1,30 @@
-/* Auth.module.css */
-
 .container {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--bg-primary);
+    padding: 20px;
+    transition: background-color 0.3s ease;
 }
 
 .authCard {
-    background-color: var(--bg-secondary);
-    backdrop-filter: blur(16px);
-    border: var(--border-color);
-    width: 100%;
-    max-width: 550px;
-    padding: 40px;
-    border-radius: 28px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.5s ease-out;
-}
-
-.logo {
-    padding: 0 50px;
-}
-
-/* Adicione estas classes ao seu arquivo existente */
-
-.passwordHint {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-top: 8px;
-    padding-left: 4px;
-}
-
-.passwordHint span {
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.3s ease;
-}
-
-.invalid {
-    color: var(--text-muted, #94a3b8);
-}
-
-.valid {
-    color: #10b981; /* Verde Sucesso */
-    font-weight: 600;
-}
-
-/* Ajuste no submit para feedback de disabled */
-.submitBtn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    filter: grayscale(0.5);
-    transform: none !important;
-    box-shadow: none !important;
-}
-
-/* Mantendo a responsividade do card */
-.authCard {
-    background-color: var(--bg-secondary);
-    backdrop-filter: blur(16px);
+    /* MUDANÇA: Cor sólida para evitar 'blur' cinza no mobile claro */
+    background-color: var(--bg-secondary); 
     border: 1px solid var(--border-color);
     width: 100%;
     max-width: 500px;
     padding: 40px;
     border-radius: 28px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     animation: fadeIn 0.5s ease-out;
 }
-
-/* ... demais estilos permanecem iguais ... */
 
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -93,22 +37,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px;
-    height: 100px;
-    justify-content: space-between;
-    margin-top: 0;
+    gap: 12px;
 }
-
-.header a{
-    display: flex;
-    justify-content: center;
-}
-
 
 .header h2 {
     font-size: 1.75rem;
     color: var(--text-main);
-    margin-bottom: 8px;
+    margin: 15px 0 5px;
     letter-spacing: -0.5px;
 }
 
@@ -117,72 +52,12 @@
     font-size: 0.95rem;
 }
 
-.socialGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 24px;
-}
-
-.socialBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: var(--bg-secondary-card);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    padding: 12px;
-    border-radius: 14px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.socialBtn i {
-    font-size: 1.2rem;
-}
-
-.socialBtn:hover {
-    background: rgba(0, 95, 219, 0.08);
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
-}
-
-.divider {
-    display: flex;
-    align-items: center;
-    margin: 24px 0;
-    color: var(--text-muted);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-}
-
-.divider::before,
-.divider::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--bg-secondary);
-}
-
-.divider span {
-    padding: 0 15px;
-}
-
 /* --- FORMULÁRIO --- */
 
 .form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .inputGroup {
@@ -214,27 +89,52 @@
 
 .inputWrapper input {
     width: 100%;
-    background: rgba(0, 0, 0, 0.055);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-primary); /* Fundo contrastante para o input */
+    border: 1px solid var(--border-color);
     padding: 14px 16px 14px 48px;
     border-radius: 14px;
     color: var(--text-main);
-    font-size: 0.95rem;
+    font-size: 1rem; /* Mínimo 16px para evitar zoom automático no iOS */
     outline: none;
     transition: all 0.3s;
 }
 
 .inputWrapper input:focus {
     border-color: var(--accent-color);
-    background: rgba(0, 0, 0, 0.13);
     box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
-.inputWrapper input:focus+i {
+.inputWrapper input:focus + i {
     color: var(--accent-color);
 }
 
-/* --- TERMOS E PRIVACIDADE --- */
+/* --- SEGURANÇA DE SENHA --- */
+
+.passwordHint {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+    padding-left: 4px;
+}
+
+.passwordHint span {
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.invalid {
+    color: #94a3b8; /* Cor neutra para requisitos não preenchidos */
+}
+
+.valid {
+    color: #10b981; /* Verde esmeralda para sucesso */
+    font-weight: 600;
+}
+
+/* --- TERMOS --- */
 
 .termsWrapper {
     display: flex;
@@ -242,20 +142,17 @@
     gap: 12px;
     margin-top: 5px;
     cursor: pointer;
-    user-select: none;
 }
 
 .termsWrapper input[type="checkbox"] {
     width: 18px;
     height: 18px;
-    margin-top: 2px;
     accent-color: var(--accent-color);
-    cursor: pointer;
 }
 
 .termsText {
     font-size: 0.85rem;
-    color: #94a3b8;
+    color: var(--text-muted);
     line-height: 1.5;
 }
 
@@ -265,15 +162,11 @@
     font-weight: 600;
 }
 
-.termsText a:hover {
-    text-decoration: underline;
-}
-
-/* --- BOTÃO SUBMIT --- */
+/* --- BOTÕES --- */
 
 .submitBtn {
     background: var(--accent-color);
-    color: #fff;
+    color: #ffffff;
     border: none;
     padding: 16px;
     border-radius: 14px;
@@ -281,29 +174,26 @@
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s;
-    margin-top: 10px;
-    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
 }
 
 .submitBtn:hover:not(:disabled) {
     filter: brightness(1.1);
     transform: translateY(-2px);
-    box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.5);
 }
 
 .submitBtn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     filter: grayscale(0.5);
+    box-shadow: none;
 }
-
-/* --- FOOTER --- */
 
 .footer {
     margin-top: 28px;
     text-align: center;
     font-size: 0.9rem;
-    color: #94a3b8;
+    color: var(--text-muted);
 }
 
 .footer a {
@@ -313,43 +203,41 @@
     margin-left: 5px;
 }
 
-.footer a:hover {
-    text-decoration: underline;
-}
-
-/* --- RESPONSIVIDADE --- */
+/* --- RESPONSIVIDADE MOBILE --- */
 
 @media (max-width: 480px) {
-    .authCard {
-        padding: 30px 20px;
-        border-radius: 0;
-        /* Opcional: card ocupa tela toda no mobile */
-        border: none;
-        background: transparent;
-        backdrop-filter: none;
-        box-shadow: none;
-    }
-
     .container {
-        background: #0a0a0c;
-        /* Fundo sólido no mobile para performance */
-        align-items: flex-start;
+        padding: 10px;
+        align-items: center;
     }
 
-    .socialGrid {
-        grid-template-columns: 1fr;
+    .authCard {
+        padding: 32px 20px;
+        border-radius: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        background-color: var(--bg-secondary-card); /* Garante cor sólida */
+        backdrop-filter: none; /* Desativa blur que causa bugs no tema claro mobile */
+    }
+
+    .header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .inputWrapper input {
+        font-size: 16px; /* Força 16px para evitar zoom do sistema */
     }
 }
 
-.socialGridFull {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 24px;
-}
-
-.socialGridFull .socialBtn {
-    width: 100%;
-    padding: 14px;
-    background: #fff;
-    color: #000;
+.inputWrapper input:-webkit-autofill,
+.inputWrapper input:-webkit-autofill:hover, 
+.inputWrapper input:-webkit-autofill:focus, 
+.inputWrapper input:-webkit-autofill:active {
+    /* MUDANÇA: Substitui a cor de fundo do navegador pela cor do seu input */
+    -webkit-box-shadow: 0 0 0 1000px var(--bg-primary) inset !important;
+    
+    /* MUDANÇA: Mantém a cor do texto correta conforme seu tema */
+    -webkit-text-fill-color: var(--text-main) !important;
+    
+    /* MUDANÇA: Garante que a transição de cor de fundo não ocorra */
+    transition: background-color 5000s ease-in-out 0s;
 }

@@ -6,7 +6,7 @@ import {
     Download, Trash2, ShieldCheck, ChevronDown
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../../lib/supabase'; // Certifique-se de que o caminho está correto
+import { supabase } from '../../lib/supabase';
 import { useTheme } from '../../contexts/ThemeContext';
 import { Button } from '../../components/Button/Button';
 import { LogoIcon } from '../../components/LogoIcon/LogoIcon';
@@ -75,6 +75,7 @@ export function Dashboard() {
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
+
         navigate('/');
     };
 
