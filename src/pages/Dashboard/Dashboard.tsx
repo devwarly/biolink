@@ -89,16 +89,15 @@ export function Dashboard() {
                     <div className={styles.logo}><LogoIcon size={120} /></div>
 
                     <div className={styles.userProfile}>
-                        {/* Use o profile?.profile_image_url para a foto do Google */}
+                        {/* Imagem dinâmica: usa a do banco ou um avatar padrão baseado no nome */}
                         <img
                             src={profile?.profile_image_url || `https://api.dicebear.com/7.x/avataaars/svg?seed=${profile?.display_name || 'User'}`}
                             alt="Avatar"
                             className={styles.profileImg}
                         />
                         <div className={styles.userInfo}>
-                            {/* TROQUE "João Silva" por isso: */}
+                            {/* Nome dinâmico do banco de dados */}
                             <h4>{profile?.display_name || 'Carregando...'}</h4>
-                            {/* TROQUE o CRECI estático por isso: */}
                             <span>{profile?.creci_number ? `CRECI ${profile.creci_number}` : 'Consultor Imobiliário'}</span>
                         </div>
                     </div>

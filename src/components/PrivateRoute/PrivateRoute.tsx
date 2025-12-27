@@ -5,14 +5,19 @@ import { supabase } from '../../lib/supabase';
 export const PrivateRoute = ({ children }: { children: ReactNode }) => {
     const [session, setSession] = useState<any>(null);
     const [loading, setLoading] = useState(true);
+    const location = useLocation();
 
     useEffect(() => {
-        // Busca a sessão que o App já deve ter validado
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session);
+        // 1. Verifica se já existe uma sessão ativa ao montar o componente
+        const getInitialSession = async () => {
+            const { data: { session: currentSession } } = await supabase.auth.getSession();
+            setSession(currentSession);
             setLoading(false);
-        });
+        };
 
+        getInitialSession();
+
+        // 2. Escuta mudanças em tempo real (essencial para capturar o redirecionamento do Google)
         const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session);
             setLoading(false);
@@ -21,7 +26,15 @@ export const PrivateRoute = ({ children }: { children: ReactNode }) => {
         return () => subscription.unsubscribe();
     }, []);
 
+    // 3. Enquanto o Supabase não confirma se o usuário está logado, retornamos nulo
+    // Isso evita que o usuário veja a tela de login por um milissegundo antes de entrar no dashboard
     if (loading) return null;
-    // Se não houver sessão, redireciona. O replace impede o "botão voltar" de quebrar o fluxo.
-    return session ? <>{children}</> : <Navigate to="/login" replace />;
+
+    // 4. Se após o carregamento não houver sessão, redireciona para o login
+    // Salvamos a rota que o usuário tentou acessar em 'state' para devolvê-lo lá depois
+    return session ? (
+        <>{children}</>
+    ) : (
+        <Navigate to="/login" state={{ from: location }} replace />
+    );
 };

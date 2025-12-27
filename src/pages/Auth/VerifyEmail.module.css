@@ -1,0 +1,112 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Utiliza as variáveis de fundo do seu tema global */
+  background-color: var(--bg-primary);
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.card {
+  max-width: 450px;
+  width: 100%;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  background-color: var(--bg-secondary-card);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.primaryBtn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+.primaryBtn:hover {
+  opacity: 0.9;
+}
+
+.primaryBtn:active {
+  transform: scale(0.98);
+}
+
+.primaryBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondaryBtn {
+  background: none;
+  border: none;
+  color: var(--text-secondary, #6b7280);
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 10px auto 0;
+  transition: color 0.2s;
+}
+
+.secondaryBtn:hover {
+  color: var(--text-primary, #1f2937);
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
