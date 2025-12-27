@@ -1,15 +1,58 @@
+/* Contentor principal do Captcha */
+.captchaContainer {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;
+    width: 100%;
+    margin: 20px 0; /* Espaçamento entre os inputs e o botão */
+    min-height: 65px; /* Evita que o layout "pule" quando o widget carrega */
+    transition: all 0.3s ease;
+}
+
+/* Garante que o widget da Cloudflare não ultrapasse o limite do card em telemóveis */
+.captchaContainer > div {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Estilo para quando o tema é dark (opcional, para reforçar contraste) */
+:global([data-theme='dark']) .captchaContainer {
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+}
+
 .container {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     background-color: var(--bg-primary);
     padding: 20px;
     transition: background-color 0.3s ease;
 }
 
+.authContent {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    padding: 20px;
+    width: 100%;
+}
+
+.mainContent {
+    flex: 1; /* Ocupa todo o espaço central disponível */
+    display: flex;
+    align-items: center; /* Centraliza o card verticalmente */
+    justify-content: center; /* Centraliza o card horizontalmente */
+    padding: 20px;
+}
+  
+  
+
 .authCard {
-    /* MUDANÇA: Cor sólida para evitar 'blur' cinza no mobile claro */
+    display: flex;
+    flex-direction: column;
     background-color: var(--bg-secondary); 
     border: 1px solid var(--border-color);
     width: 100%;
@@ -108,7 +151,45 @@
     color: var(--accent-color);
 }
 
-/* --- SEGURANÇA DE SENHA --- */
+/* Auth.module.css */
+
+.forgotPasswordWrapper {
+    display: flex;
+    justify-content: flex-end; /* Alinha o link à direita */
+    margin-top: 6px;
+}
+
+.forgotPasswordLink {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.forgotPasswordLink:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Ajuste adicional para o botão de voltar na tela de esqueci senha */
+.backLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.backLink:hover {
+    color: var(--text-main);
+}
+
+
 
 .passwordHint {
     display: flex;
@@ -134,7 +215,31 @@
     font-weight: 600;
 }
 
-/* --- TERMOS --- */
+/* Feedback de Validação */
+.validationFeedback {
+    margin: 10px 0;
+    font-size: 0.85rem;
+}
+
+.valid {
+    color: #22c55e; /* Verde */
+}
+
+.invalid {
+    color: #94a3b8; /* Cinza suave */
+}
+
+/* Estado do Botão Desabilitado */
+.disabledBtn {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(1);
+    transform: none !important; /* Remove efeitos de hover se houver */
+}
+
+.submitBtn:disabled {
+    pointer-events: none; /* Garante que nenhum clique passe */
+}
 
 .termsWrapper {
     display: flex;

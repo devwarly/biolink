@@ -1,0 +1,94 @@
+.propertiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem; /* */
+}
+
+.propertyCard {
+  background: var(--bg-secondary-card);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: 0.3s ease; /* */
+}
+
+.propertyImage {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative; /* */
+}
+
+.statusBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px); /* */
+}
+
+.userActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.propertyInfo {
+  padding: 1.5rem;
+}
+
+.price { color: var(--accent-color); font-weight: 700; font-size: 1.25rem; margin: 8px 0; }
+
+.propertyMeta { font-size: 0.85rem; color: var(--text-muted); }
+
+.cardActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color); /* */
+}
+
+.actionIcon {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.actionIcon:hover {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color); /* */
+}
+
+/* Botão Adicionar */
+.addPropertyCard {
+  border: 2px dashed #cbd5e1;
+  background: transparent;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  gap: 1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: 0.3s; /* */
+}
+
+.addPropertyCard:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background: rgba(56, 189, 248, 0.05); /* */
+}

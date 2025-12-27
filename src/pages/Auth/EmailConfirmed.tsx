@@ -1,55 +1,62 @@
 import { useEffect, useState } from 'react';
-import { CheckCircle, ShieldCheck, Loader2 } from 'lucide-react';
+import { ShieldCheck, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import styles from './VerifyEmail.module.css';
+import { supabase } from '../../lib/supabase';
+import { AuthFooter } from '../../components/AuthFooter/AuthFooter';
+import styles from './EmailConfirmed.module.css';
 
 export const EmailConfirmed = () => {
     const navigate = useNavigate();
-    const [status, setStatus] = useState('Finalizando ativação da conta...');
+    const [status, setStatus] = useState('Verificando sua conta...');
 
     useEffect(() => {
-        const handleRedirect = async () => {
-            // Aguarda 3 segundos para o usuário ler a confirmação e garantir a segurança
+        const confirmAccount = async () => {
+            // O Supabase processa o token automaticamente ao carregar a página
+            const { error } = await supabase.auth.getSession();
+
+            if (error) {
+                setStatus('Erro ao validar link. Tente novamente.');
+                return;
+            }
+
+            // Aguarda o tempo visual definido
             await new Promise(resolve => setTimeout(resolve, 3000));
-            
-            setStatus('Conta ativada! Redirecionando para o login...');
-            
+            setStatus('Conta ativada! Redirecionando...');
+
             setTimeout(() => {
                 navigate('/login');
-            }, 1000);
+            }, 1500);
         };
 
-        handleRedirect();
+        confirmAccount();
     }, [navigate]);
 
     return (
         <div className={styles.container}>
-            <div className={styles.card}>
-                <div className={styles.iconWrapper} style={{ backgroundColor: 'rgba(16, 185, 129, 0.1)' }}>
-                    <ShieldCheck size={48} color="#10b981" />
-                </div>
-                
-                <h1 className={styles.title}>E-mail Confirmado!</h1>
-                
-                <p className={styles.description}>
-                    Sua conta foi verificada com sucesso. Por questões de segurança, 
-                    solicitamos que realize seu primeiro acesso.
-                </p>
+            {/* O mainContent garante a centralização vertical e horizontal */}
+            <main className={styles.mainContent}>
+                <div className={styles.card}>
+                    <div className={styles.iconWrapper}>
+                        <ShieldCheck size={48} color="#10b981" />
+                    </div>
 
-                <div style={{ 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    gap: '12px', 
-                    color: 'var(--text-secondary, #6b7280)' 
-                }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Loader2 className={styles.spin} size={18} />
-                        <span style={{ fontSize: '14px' }}>{status}</span>
+                    <h1 className={styles.title}>E-mail Confirmado!</h1>
+
+                    <p className={styles.description}>
+                        Sua conta foi verificada com sucesso. Por questões de segurança,
+                        solicitamos que realize seu primeiro acesso.
+                    </p>
+
+                    <div className={styles.statusWrapper}>
+                        <div className={styles.loaderGroup}>
+                            <Loader2 className={styles.spin} size={18} />
+                            <span className={styles.statusText}>{status}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </main>
+
+            <AuthFooter />
         </div>
     );
 };

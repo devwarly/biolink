@@ -1,0 +1,37 @@
+.tableCard {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.leadsTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.leadsTable th {
+  text-align: left;
+  padding: 16px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.leadsTable td {
+  padding: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.9rem;
+}
+
+.leadsTable { width: 100%; border-collapse: collapse; }
+.leadsTable th { text-align: left; padding: 16px; background: var(--bg-secondary); color: var(--text-muted); font-size: 0.8rem; }
+.leadsTable td { padding: 16px; border-bottom: 1px solid var(--border-color); }
+
+[data-theme='dark'] .leadsTable th {
+  background: #1f2937;
+  color: #9ca3af;
+}

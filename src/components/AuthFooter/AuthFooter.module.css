@@ -1,0 +1,47 @@
+.authFooter {
+    width: 100%;
+    padding: 24px 0;
+    background-color: var(--bg-primary); /* Ou var(--bg-secondary) se quiser destaque */
+    border-top: 1px solid var(--border-color);
+}
+
+.footerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Garante que não quebre em telas muito pequenas */
+    margin-bottom: 8px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.icon {
+    color: var(--accent-color);
+}
+
+.divider {
+    width: 4px;
+    height: 4px;
+    background-color: var(--border-color);
+    border-radius: 50%;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* Responsividade: Esconde os ícones em celulares muito pequenos se necessário */
+@media (max-width: 480px) {
+    .divider { display: none; }
+    .footerContent { gap: 10px; flex-direction: column; }
+}

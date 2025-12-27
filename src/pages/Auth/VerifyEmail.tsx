@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { Mail, CheckCircle, ArrowLeft, RefreshCw } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
-import { useNotification } from '../../contexts/NotificationContext'; 
+import { useNotification } from '../../contexts/NotificationContext';
 import styles from './VerifyEmail.module.css';
+import { AuthFooter } from '../../components/AuthFooter/AuthFooter';
 
 export const VerifyEmail = () => {
     const navigate = useNavigate();
-    const { notify } = useNotification(); 
+    const { notify } = useNotification();
     const [loading, setLoading] = useState(false);
 
     const handleCheckVerification = async () => {
@@ -38,27 +39,35 @@ export const VerifyEmail = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.card}>
-                <div className={styles.iconWrapper}>
-                    <Mail size={40} color="var(--accent-color, #4f46e5)" />
-                </div>
-                
-                <h1 className={styles.title}>Verifique seu e-mail</h1>
-                <p className={styles.description}>
-                    Enviamos um link de ativação para você. 
-                    Confirme no seu e-mail e clique no botão abaixo para liberar seu acesso.
-                </p>
+            {/* Wrapper para centralizar o card vertical e horizontalmente */}
+            <main className={styles.mainContent}>
+                <div className={styles.card}>
+                    <div className={styles.authContent}>
+                        <div className={styles.iconWrapper}>
+                            <Mail size={40} color="var(--accent-color, #4f46e5)" />
+                        </div>
 
-                <div className={styles.buttonGroup}>
+                        <h1 className={styles.title}>Verifique seu e-mail</h1>
+                        <p className={styles.description}>
+                            Enviamos um link de ativação para você.
+                            Confirme no seu e-mail e clique no botão abaixo para liberar seu acesso.
+                        </p>
 
-                    <button 
-                        onClick={() => navigate('/login')}
-                        className={styles.secondaryBtn}
-                    >
-                        <ArrowLeft size={16} /> Voltar para o login
-                    </button>
+                        <div className={styles.buttonGroup}>
+
+                            <button
+                                onClick={() => navigate('/login')}
+                                className={styles.secondaryBtn}
+                            >
+                                <ArrowLeft size={16} /> Voltar para o login
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </main>
+
+            {/* Footer sempre no final */}
+            <AuthFooter />
         </div>
     );
 };
